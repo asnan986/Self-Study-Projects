@@ -1,0 +1,19 @@
+package busTravel;
+
+public class Passenger {
+	
+	private int passengerId;
+	private float fare;
+	private boolean isOnTheBus;
+	private int stopNo;
+	public Passenger(int passengerId, boolean isOnTheBus, int stopNo,float fare) {
+		super();
+		this.passengerId = passengerId;
+		this.isOnTheBus = isOnTheBus;
+		this.stopNo = stopNo;
+		this.fare=fare;
+	}
+	
+
+	
+}

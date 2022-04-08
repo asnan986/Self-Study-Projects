@@ -1,0 +1,77 @@
+package busTravel;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Scanner s = new Scanner(System.in);
+		PassengerDetails details = new PassengerDetails();
+		
+		List<Passenger> list= new ArrayList<Passenger>();
+		
+		int seatingCapacity= Integer.parseInt(s.nextLine());
+		if(seatingCapacity%2!=0) 
+			seatingCapacity++;
+		
+		int noOfStops=Integer.parseInt(s.nextLine());
+		int i=1;
+		
+		while(i<=noOfStops) {
+			String pid_stop=s.nextLine();
+			String[] temp=pid_stop.split(" ");
+			int nofpassengersinBus=0;
+			for(String y:temp) {
+				boolean isOntheBus= y.charAt(0)=='+' ? true:false;
+				nofpassengersinBus=isOntheBus?nofpassengersinBus++:nofpassengersinBus;
+			}
+			int percentage=(nofpassengersinBus)*100/(seatingCapacity);
+			float fare=0;
+			if(percentage<=25)
+				fare=1.6f*seatingCapacity;
+			else if(percentage>25&&percentage<=50)
+				fare=1.3f*seatingCapacity;
+			else
+				fare=seatingCapacity;
+			for (String x:temp) {
+				int passengerId= Integer.parseInt(x.substring(1));
+				boolean isOntheBus= x.charAt(0)=='+' ? true:false;
+				
+				list.add(new Passenger(passengerId, isOntheBus, i,isOntheBus? fare:0));
+			}
+			i++;
+			
+		}
+		int queryNO=Integer.parseInt(s.nextLine());
+		int id=0;
+		if(queryNO>2&&queryNO<=5)
+		  id= Integer.parseInt(s.nextLine());
+		
+		switch (queryNO) {
+		case 1:
+			details.query1(list,seatingCapacity);
+			break;
+		case 2:
+			details.query2(list,seatingCapacity);
+			break;
+		case 3:
+			details.query3(list,id);
+			break;
+		case 4:
+			details.query4(list,id);
+			break;
+		case 5:
+			details.query1();
+			break;
+		}
+		
+		
+		
+		
+
+	}
+
+}

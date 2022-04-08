@@ -1,0 +1,63 @@
+package com.fresco;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
+public class LambdaFn {
+
+	public static void main(String[] args) {
+
+		List<String> listOfNumbers = new ArrayList<String>();
+		int i = 1;
+		while (i <= 100) {
+			listOfNumbers.add(Integer.toString(i));
+			i++;
+		}
+		//System.out.println(Kaprekar.find(listOfNumbers).toString());
+	}
+
+	public List<Long> functionalProgtamming(List<String> listOfNumbers) {
+
+		List<Long> templist = new ArrayList<Long>();
+		List<Long> templist1 = new ArrayList<Long>();
+		listOfNumbers.forEach(i -> templist.add(Long.parseLong(i)));
+
+		Stream<Long> s = templist.stream().map(i ->(long)Math.pow(i, 2))
+				.filter(i -> {
+					long right=0, left=0;
+					//int n1 = i.length();
+					//int n = Double.toString(Math.sqrt(Long.parseLong(i))).length();
+					 long sqrt=(long) Math.sqrt(i);
+					 long check=sqrt;
+					 long itemp=i;
+					 int k=0,j=0;
+                    while(itemp>0)
+                    {
+                    	if(check>0) {
+                    	right=(long)(right+(itemp%10)*Math.pow(10, k));
+                    	k++;}
+                    	else {
+                    		left=(long)(left+(itemp%10)*Math.pow(10, j));
+                    		j++;
+                    	}
+                    	check=check/10;
+                    	itemp=itemp/10;
+                    	
+                    }
+//					right = Long.parseLong(i.substring(n / 2, -1));
+//					if (n1 - n > 0)
+//						left = Long.parseLong(i.substring(0, n1 - n));
+//					if ((right + left) == Math.sqrt(Long.parseLong(i)))
+//						;
+                    if((right+left)==sqrt)
+					return true;
+					return false;
+				});
+		
+         //s.forEach(i->System.out.println(i));
+		s.forEach(i -> templist1.add((long)Math.sqrt(i)));
+
+		return templist1;
+	}
+
+}

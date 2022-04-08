@@ -1,0 +1,33 @@
+package busTravel;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Scanner s = new Scanner(System.in);
+		
+		int seatingCapacity= Integer.parseInt(s.nextLine());
+		if(seatingCapacity%2!=0) 
+			seatingCapacity++;
+		
+		int noOfStops=Integer.parseInt(s.nextLine());
+		int i=noOfStops;
+		
+		while(i>0) {
+			String pid_stop=s.nextLine();
+			String[] temp=pid_stop.split(" ");
+			int nofpassengersinBus=0;
+			for (String x:temp) {
+				int passengerId= Integer.parseInt(x.substring(1));
+				boolean isOntheBus= x.charAt(0)=='+' ? true:false;
+				nofpassengersinBus=isOntheBus?nofpassengersinBus++:nofpassengersinBus;
+			}
+			pid_stop.
+		}
+		
+
+	}
+
+}

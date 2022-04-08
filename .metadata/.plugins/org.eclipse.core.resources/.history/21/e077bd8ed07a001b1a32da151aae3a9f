@@ -1,0 +1,71 @@
+package busTravel;
+
+import java.util.List;
+
+public class PassengerDetails {
+
+	public void query1(List<Passenger> list, int noOfStops) {
+
+		for (int i = 1; i <= noOfStops; i++) {
+			int in = 0;
+			int out = 0;
+			for (Passenger p : list) {
+				if (p.getStopNo() == i&&p.isOnTheBus()) 
+						in++;
+					else
+						out++;
+				
+			}
+			// sysout
+		}
+	}
+
+	public void query2(List<Passenger> list, int seatingCapacity) {
+		float fare1=1.6f*seatingCapacity;
+		float fare2=1.3f*seatingCapacity;
+		int noOffare1=0,noOffare2=0,noOffaren=0;
+		for(Passenger p:list) {
+			if(p.getFare()==fare1)
+				noOffare1++;
+			else if(p.getFare()==fare2)
+				noOffare2++;
+			else
+				noOffaren++;
+		}
+		
+		//sysout 
+
+	}
+
+	public void query3(List<Passenger> list, int id) {
+		float faresum=0;
+		for(Passenger p:list) {
+			if(p.getPassengerId()==id) {
+				faresum=p.getFare();
+			}
+		}
+  //sysout
+	}
+
+	public void query4(List<Passenger> list, int id) {
+		
+		int sum=0;
+		for(Passenger p:list) {
+			if(p.isOnTheBus()) {
+				sum++;
+			}
+		}
+     //sysout
+	}
+
+	public void query5(List<Passenger> list, int id, int noOfStops) {
+		
+		boolean isInside=false;
+		for(Passenger p:list) {
+			if (p.getStopNo()==noOfStops&&p.isOnTheBus()) {
+				
+			}
+		}
+
+	}
+}
